@@ -31,7 +31,8 @@ def get_file():
 
     if not error:
         fname = sys.argv[1]
-        error = fname.count('.') < 1 or fname[fname.rindex('.') + 1:] not in IMG_EXTS
+        error = fname.count(
+            '.') < 1 or fname[fname.rindex('.') + 1:] not in IMG_EXTS
 
     if error:
         print("Usage: python edges.py <filename.png | .jpg | .bmp | .gif>")
@@ -81,7 +82,8 @@ def extract_edges(img: Image):
                         sum += grayscale[xx][yy] * filter[xOffs + 1][yOffs + 1]
 
                 vals[i] = sum
-                pixels[x, y] = int(sqrt(vals[0] ** 2 + vals[1] ** 2))
+                n_pixel = int(sqrt(vals[0] ** 2 + vals[1] ** 2))
+                pixels[x, y] = (n_pixel, n_pixel, n_pixel)
 
 
 def main():
